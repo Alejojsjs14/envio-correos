@@ -34,9 +34,9 @@ EMAIL_PASSWORD=tu_contraseña_o_token
 
 ```
 {
-   "to": "alejandro.ytf@gmail.com",
-   "subject": "Zorra",
-   "text": "Zunga de parqueadero"
+   "to": "ejemplo@gmail.com",
+   "subject": "Hola",
+   "text": "Correo de parqueadero"
 }
 ```
 
