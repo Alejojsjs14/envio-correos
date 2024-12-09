@@ -30,6 +30,15 @@ PORT=3000
 EMAIL=tu_correo@gmail.com
 EMAIL_PASSWORD=tu_contraseña_o_token
 ```
+### Ejemplo de JSON :
+
+```
+{
+   "to": "alejandro.ytf@gmail.com",
+   "subject": "Zorra",
+   "text": "Zunga de parqueadero"
+}
+```
 
 ---
 
