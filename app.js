@@ -1,27 +1,20 @@
 import express, { json } from "express";
-import emailHelper from "./helpers/emailHelper.js";
-import { PORT } from './utils/env.config.js'
+import log from "morgan";
+import { NODE_ENV } from "./utils/env.config.js";
+import errorHandler from "./middlewares/error.middleware.js";
+import router from "./routes/routes.js";
 
 const app = express();
 
-// Middleware
+app.use(log(NODE_ENV || "local"));
+
 app.use(json());
+app.use(express.urlencoded({ extended: true }));
 
 // Routes
-app.post("/email", async (req, res) => {
-  const { to, subject, text } = req.body;
+app.use("/api", router);
 
-  try {
-    let info = await emailHelper(to, subject, text);
-    res.status(200).send(`Email sent: ${info.response}`);
-  } catch (error) {
-    res.status(500).send("Error sending email");
-  }
-});
+// Middleware
+app.use(errorHandler);
 
-const port = PORT || 8080
-
-// Start the server
-app.listen(port, () => {
-  console.log(`Server is running on http://localhost:${port}`);
-});
+export default app;
